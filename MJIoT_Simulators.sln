@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleSimulator", "SimpleSimulator\SimpleSimulator.csproj", "{457916CC-558F-49EF-BF3C-D68961D50928}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleSender", "SimpleSender\SimpleSender.csproj", "{D7E45418-40D5-4D7E-B115-C5969C93EECA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,12 +17,16 @@ Global
 		{457916CC-558F-49EF-BF3C-D68961D50928}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{457916CC-558F-49EF-BF3C-D68961D50928}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{457916CC-558F-49EF-BF3C-D68961D50928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7E45418-40D5-4D7E-B115-C5969C93EECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7E45418-40D5-4D7E-B115-C5969C93EECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7E45418-40D5-4D7E-B115-C5969C93EECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7E45418-40D5-4D7E-B115-C5969C93EECA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 		SolutionGuid = {14190796-A081-427B-80DA-B066548296F4}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 	EndGlobalSection
 EndGlobal
