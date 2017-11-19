@@ -84,10 +84,12 @@ namespace SimpleSimulator
 
                 var telemetryDataPoint = new
                 {
-                    messageId = messageId++,
-                    deviceId = "myFirstDevice",
-                    temperature = currentTemperature,
-                    humidity = currentHumidity
+                    //messageId = messageId++,
+                    DeviceId = "7",
+                    PropertyName = "SimulatedSwitchState",
+                    Value = currentTemperature.ToString()
+                    //temperature = currentTemperature,
+                    //humidity = currentHumidity
                 };
                 var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
                 var message = new Message(Encoding.ASCII.GetBytes(messageString));
