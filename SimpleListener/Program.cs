@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 //Microsoft.Azure.Devices.Client
 using Microsoft.Azure.Devices.Client;
+using Newtonsoft.Json;
 
 namespace SimpleListener
 {
@@ -34,7 +35,7 @@ namespace SimpleListener
                 Message receivedMessage = await deviceClient.ReceiveAsync();
                 if (receivedMessage == null) continue;
 
-                var value = Encoding.ASCII.GetString(receivedMessage.GetBytes());
+                var value = JsonConvert.DeserializeObject<CloudToDeviceMessage>(Encoding.ASCII.GetString(receivedMessage.GetBytes())).Value;
 
                 if (value == "true")
                 {
@@ -53,12 +54,27 @@ namespace SimpleListener
                     Console.WriteLine(value);
                 }
 
-                //Console.ForegroundColor = ConsoleColor.Yellow;
-                //Console.WriteLine("Received message: {0}", Encoding.ASCII.GetString(receivedMessage.GetBytes()));
-                //Console.ResetColor();
+                //SEND NEW VALUE TO IOT HUB:
+                var telemetryDataPoint = new
+                {
+                    //messageId = messageId++,
+                    DeviceId = "8",
+                    PropertyName = "SimulatedLampState",
+                    Value = value
+                };
+                var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
+                var message = new Message(Encoding.ASCII.GetBytes(messageString));
+                //message.Properties.Add("temperatureAlert", (currentTemperature > 30) ? "true" : "false");
+                await deviceClient.SendEventAsync(message);
 
                 await deviceClient.CompleteAsync(receivedMessage);
             }
         }
+    }
+
+    class CloudToDeviceMessage
+    {
+        public string PropertyName { get; set; }
+        public string Value { get; set; }
     }
 }
