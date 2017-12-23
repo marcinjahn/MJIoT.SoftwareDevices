@@ -16,9 +16,9 @@ namespace SimpleSimulator
 {
     class Program
     {
-        static string iotHubUri = "MJIoT-IoTHub.azure-devices.net";
+        static string iotHubUri = "MJIoT-Hub.azure-devices.net";
         static DeviceClient deviceClient;
-        static string deviceKey = "W0U+2qf1rLlutN5lT5DtvtqbT4MvKHWbbTYwJJvz5qs=";
+        static string deviceKey = "sCckmieMardTTda24JU38pfduJr3m/fxddT4imPvPvM=";
 
         static void Main(string[] args)
         {
@@ -42,7 +42,7 @@ namespace SimpleSimulator
                     //messageId = messageId++,
                     DeviceId = "7",
                     PropertyName = "SimulatedSwitchState",
-                    Value = choice == "1" ? "true" : "false"
+                    Value = choice == "1" ? "ON" : "OFF"
                 };
                 var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
                 var message = new Message(Encoding.ASCII.GetBytes(messageString));

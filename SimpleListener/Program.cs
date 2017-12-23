@@ -12,9 +12,9 @@ namespace SimpleListener
 {
     class Program
     {
-        static string iotHubUri = "MJIoT-IoTHub.azure-devices.net";
+        static string iotHubUri = "MJIoT-Hub.azure-devices.net";
         static DeviceClient deviceClient;
-        static string deviceKey = "gx9H//lbyFI/5pT8CeX/mVamQHo3mGYcVr1iG0N3pMg=";
+        static string deviceKey = "UoqCPr/0p21h1+zBqRy7D8EES6pTmDWMWp47W09V/sQ=";
 
         static void Main(string[] args)
         {
