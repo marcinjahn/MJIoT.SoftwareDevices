@@ -25,6 +25,8 @@ namespace SimpleSimulator
             Console.WriteLine("Simulated device\n");
             deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("7", deviceKey), Microsoft.Azure.Devices.Client.TransportType.Mqtt);
 
+            deviceClient.SetMethodHandlerAsync("conn", ConnectionCheck, null);
+
             Task.Run(() => SendDeviceToCloudMessagesAsync());
 
             while (true) { };
@@ -33,6 +35,7 @@ namespace SimpleSimulator
 
         private static async void SendDeviceToCloudMessagesAsync()
         {
+            
             while (true)
             {
                 Console.WriteLine("Your message: ");
@@ -53,6 +56,16 @@ namespace SimpleSimulator
 
                 //await Task.Delay(1000);
             }
+        }
+
+        static Task<MethodResponse> ConnectionCheck(MethodRequest methodRequest, object userContext)
+        {
+            Console.WriteLine("isConnected check invoked");
+            //Console.WriteLine("\t{0}", methodRequest.DataAsJson);
+            //Console.WriteLine("\nReturning response for method {0}", methodRequest.Name);
+
+            //string result = "'Input was written to log.'";
+            return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(""), 200));
         }
     }
 }
