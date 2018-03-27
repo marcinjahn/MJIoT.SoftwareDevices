@@ -48,7 +48,7 @@ namespace SimpleListener
                 Message receivedMessage = await deviceClient.ReceiveAsync();
                 if (receivedMessage == null) continue;
 
-                var value = JsonConvert.DeserializeObject<CloudToDeviceMessage>(Encoding.ASCII.GetString(receivedMessage.GetBytes())).Value;
+                var value = JsonConvert.DeserializeObject<CloudToDeviceMessage>(Encoding.ASCII.GetString(receivedMessage.GetBytes())).PropertyValue;
 
                 if (value == "true")
                 {
@@ -73,7 +73,7 @@ namespace SimpleListener
                     //messageId = messageId++,
                     DeviceId = "8",
                     PropertyName = "SimulatedLampState",
-                    Value = value
+                    PropertyValue = value
                 };
                 var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
                 var message = new Message(Encoding.ASCII.GetBytes(messageString));
@@ -88,6 +88,6 @@ namespace SimpleListener
     class CloudToDeviceMessage
     {
         public string PropertyName { get; set; }
-        public string Value { get; set; }
+        public string PropertyValue { get; set; }
     }
 }

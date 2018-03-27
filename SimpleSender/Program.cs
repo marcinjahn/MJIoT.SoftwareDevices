@@ -45,7 +45,7 @@ namespace SimpleSimulator
                     //messageId = messageId++,
                     DeviceId = "7",
                     PropertyName = "SimulatedSwitchState",
-                    Value = choice == "1" ? "ON" : "OFF"
+                    PropertyValue = choice == "1" ? "ON" : "OFF"
                 };
                 var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
                 var message = new Message(Encoding.ASCII.GetBytes(messageString));

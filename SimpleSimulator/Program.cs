@@ -87,7 +87,7 @@ namespace SimpleSimulator
                     //messageId = messageId++,
                     DeviceId = "7",
                     PropertyName = "SimulatedSwitchState",
-                    Value = currentTemperature.ToString()
+                    PropertyValue = currentTemperature.ToString()
                     //temperature = currentTemperature,
                     //humidity = currentHumidity
                 };
