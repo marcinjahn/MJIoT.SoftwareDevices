@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Threading;
 
 
-//Microsoft.Azure.Devices.Client
 using Microsoft.Azure.Devices.Client;
 using Newtonsoft.Json;
 
@@ -18,7 +17,12 @@ namespace SimpleSimulator
     {
         static string iotHubUri = "MJIoT-Hub.azure-devices.net";
         static DeviceClient deviceClient;
+        //7
         static string deviceKey = "sCckmieMardTTda24JU38pfduJr3m/fxddT4imPvPvM=";
+
+        //16
+        //static string deviceKey = "KH1lBXwZG85HVUOnaeMVn7gT5Xum3+JO+F1+BWCXzfU=";
+
 
         static void Main(string[] args)
         {
@@ -44,8 +48,8 @@ namespace SimpleSimulator
                 {
                     //messageId = messageId++,
                     DeviceId = "7",
-                    PropertyName = "SimulatedSwitchState",
-                    PropertyValue = choice == "1" ? "ON" : "OFF"
+                    PropertyName = "Switch State",
+                    PropertyValue = choice == "1" ? "true" : "false"
                 };
                 var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
                 var message = new Message(Encoding.ASCII.GetBytes(messageString));

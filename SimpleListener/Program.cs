@@ -72,7 +72,7 @@ namespace SimpleListener
                 {
                     //messageId = messageId++,
                     DeviceId = "8",
-                    PropertyName = "SimulatedLampState",
+                    PropertyName = "LED State",
                     PropertyValue = value
                 };
                 var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
