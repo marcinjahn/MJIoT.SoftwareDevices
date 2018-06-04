@@ -53,7 +53,7 @@ namespace Mj.CmdDashArgsReaderLibrary
                 .FirstOrDefault();
 
             if (argDef != null)
-                result = _argumentValues.GetValueOrDefault(argDef);
+                _argumentValues.TryGetValue(argDef, out result);
 
             return result;
 

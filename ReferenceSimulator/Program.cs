@@ -84,7 +84,7 @@ namespace ReferenceSimulator
             Console.ResetColor();
         }
 
-        static void StartSender(string propertyName, string format)
+        static async void StartSender(string propertyName, string format)
         {
             var sender = new Sender(_device);
 
