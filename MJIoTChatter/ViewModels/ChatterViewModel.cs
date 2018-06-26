@@ -1,27 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using MjIot.Devices.Common.Core;
-using MjIot.Devices.Common.Models;
-using Mj.CmdDashArgsReaderLibrary;
+﻿using Mj.CmdDashArgsReaderLibrary;
 using MjIot.Devices.Common;
-using MJIoTChatter.Models;
+using MjIot.Devices.Common.Core;
+using MjIot.Devices.Reference.Chatter.Models;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
-namespace MJIoTChatter.ViewModels
+namespace MjIot.Devices.Reference.Chatter.ViewModels
 {
     public class ChatterViewModel : MJMVVM.NotificationBase
     {
-        readonly string _iotHubUri = "MJIoT-Hub.azure-devices.net";
+        private readonly string _iotHubUri = "MJIoT-Hub.azure-devices.net";
 
-        readonly IotHubDevice _device;
-        readonly Sender _sender;
-        readonly Listener _listener;
+        private readonly IotHubDevice _device;
+        private readonly Sender _sender;
+        private readonly Listener _listener;
 
-        CmdDashArgsReader _argsReader;
+        private CmdDashArgsReader _argsReader;
 
         public ChatterViewModel()
         {
@@ -56,11 +52,10 @@ namespace MJIoTChatter.ViewModels
             //    new SentMessage("Some message2"),
             //    new ReceivedMessage("Some message3")
             //};
-
         }
 
-
         private string _chatBoxContent;
+
         public string ChatBoxContent
         {
             get { return _chatBoxContent; }
@@ -68,6 +63,7 @@ namespace MJIoTChatter.ViewModels
         }
 
         private string _deviceName;
+
         public string DeviceName
         {
             get { return _deviceName; }
@@ -75,6 +71,7 @@ namespace MJIoTChatter.ViewModels
         }
 
         private string _lastMessage;
+
         public string LastMessage
         {
             get { return _lastMessage; }
@@ -82,12 +79,12 @@ namespace MJIoTChatter.ViewModels
         }
 
         private ObservableCollection<ChatMessageBase> _messages;
+
         public ObservableCollection<ChatMessageBase> Messages
         {
             get { return _messages; }
             set { SetProperty(ref _messages, value); }
         }
-
 
         private async void OnMessageReceived(object sender, MesageReceivedEventArgs message)
         {
@@ -109,18 +106,15 @@ namespace MJIoTChatter.ViewModels
             _argsReader = new CmdDashArgsReader(definitions, args);
         }
 
-
         #region COMMANDS
 
         public MJMVVM.DelegateCommand SendCommand { get; private set; }
 
-        #endregion
-
-
+        #endregion COMMANDS
 
         #region COMMAND HANDLERS
 
-        async void OnSend(object arg)
+        private async void OnSend(object arg)
         {
             var message = _sender.CreateMessage("Sent Message", LastMessage);
             await _sender.SendMessageAsync(message);
@@ -138,6 +132,6 @@ namespace MJIoTChatter.ViewModels
             return (LastMessage.Length != 0);
         }
 
-        #endregion
+        #endregion COMMAND HANDLERS
     }
 }

@@ -7,9 +7,8 @@ using MjIot.Devices.Common.Core;
 using MjIot.Devices.Common.Models;
 using Mj.CmdDashArgsReaderLibrary;
 using System.Collections.Generic;
-using ReferenceSimulator.Utils;
 
-namespace ReferenceSimulator
+namespace MjIot.Devices.Reference.CmdDevice
 {
     class Program
     {
