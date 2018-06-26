@@ -49,6 +49,7 @@ namespace ReferenceSimulator
             else if (type == "listener")
                 StartListener();
 
+            while (true) { };
         }
 
         private static void SetCmdArgsReader(IEnumerable<string> args)
@@ -73,8 +74,6 @@ namespace ReferenceSimulator
                 Console.WriteLine();
                 Console.WriteLine($"{args.Payload.PropertyName}: {args.Payload.PropertyValue}");
             };
-
-            while (true) { };
         }
 
         static void DisplayOnlineCheckMessage(object sender, EventArgs e)
@@ -99,7 +98,7 @@ namespace ReferenceSimulator
                 Console.WriteLine($"Sending: {choice}");
 
                 var message = sender.CreateMessage(new TelemetryPayload(_device.DeviceId, propertyName, choice));
-                sender.SendMessageAsync(message);
+                await sender.SendMessageAsync(message);
             }
         }
 

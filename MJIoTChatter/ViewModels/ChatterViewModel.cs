@@ -134,8 +134,8 @@ namespace MJIoTChatter.ViewModels
 
         private bool CanSend(object arg)
         {
-            return true;
-            //return (LastMessage.Length != 0);
+            //return true;
+            return (LastMessage.Length != 0);
         }
 
         #endregion
