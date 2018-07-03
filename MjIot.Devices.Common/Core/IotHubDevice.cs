@@ -28,6 +28,11 @@ namespace MjIot.Devices.Common.Core
             SetConnectionCheckHandler();
         }
 
+        public async Task CloseAsync()
+        {
+            await DeviceClient.CloseAsync();
+        }
+
         protected virtual void OnOnlineStatusChecked(EventArgs e)
         {
             OnlineStatusChecked?.Invoke(this, e);

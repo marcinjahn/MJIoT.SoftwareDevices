@@ -73,6 +73,13 @@ namespace MjIot.Devices.Reference.CmdDevice
                 Console.WriteLine();
                 Console.WriteLine($"{args.Payload.PropertyName}: {args.Payload.PropertyValue}");
             };
+
+            while(true)
+            {
+                Console.ReadLine();
+                _device.CloseAsync().Wait();
+                Console.WriteLine("Device connection closed");
+            }
         }
 
         static void DisplayOnlineCheckMessage(object sender, EventArgs e)
@@ -90,6 +97,13 @@ namespace MjIot.Devices.Reference.CmdDevice
             {
                 Console.Write("New message: ");
                 var choice = Console.ReadLine();
+
+                if (choice == "")
+                {
+                    _device.CloseAsync().Wait();
+                    Console.WriteLine("Device connection closed");
+                    return;
+                }
 
                 if (choice == " " && format != null)
                     choice = GetRandomValue(format, choice);
