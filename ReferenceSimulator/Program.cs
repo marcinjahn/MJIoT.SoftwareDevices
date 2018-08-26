@@ -67,11 +67,14 @@ namespace MjIot.Devices.Reference.CmdDevice
         private static void StartListener()
         {
             var listener = new Listener(_device);
+            var sender = new Sender(_device);
             listener.StartListening();
-            listener.MessageReceived += (sender, args) =>
+            listener.MessageReceived += async (senderDev, args) =>
             {
                 Console.WriteLine();
                 Console.WriteLine($"{args.Payload.PropertyName}: {args.Payload.PropertyValue}");
+                var message = sender.CreateMessage(new TelemetryPayload(_device.DeviceId, args.Payload.PropertyName, args.Payload.PropertyValue));
+                await sender.SendMessageAsync(message);
             };
 
             while(true)
