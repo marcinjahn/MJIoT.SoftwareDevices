@@ -8,7 +8,7 @@
              xmlns:viewModels="clr-namespace:MjIot.Devices.Reference.Chatter.ViewModels"
              xmlns:msgTypes="clr-namespace:MjIot.Devices.Reference.Chatter.Models"
              d:DesignHeight="450" d:DesignWidth="400"
-             Background="#FFEDEDED">
+             Background="White">
 
     <UserControl.Resources>
         <viewModels:ChatterViewModel x:Key="thisVM" />
@@ -18,7 +18,7 @@
         <StaticResource ResourceKey="thisVM" />
     </UserControl.DataContext>
 
-    <Grid Margin="10">
+    <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -34,12 +34,12 @@
         <!--<TextBox Grid.Row="2" IsReadOnly="True" Text="{Binding ChatBoxContent}"></TextBox>-->
 
         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" ScrollChanged="ScrollViewer_ScrollChanged">
-            <ItemsControl Background="#FF282828" ItemsSource="{Binding Path=Messages}">
+            <ItemsControl ItemsSource="{Binding Path=Messages}" BorderBrush="#FF9C9C9C" BorderThickness="1">
                 <ItemsControl.Resources>
                     <DataTemplate DataType="{x:Type msgTypes:ReceivedMessage}">
                         <Border Margin="10" HorizontalAlignment="Left"
-                                Background="Gray" CornerRadius="10"
-                                Padding="5">
+                                Background="#FFC2C2C2" CornerRadius="10"
+                                Padding="5" BorderThickness="1" BorderBrush="#FF999999">
                             <StackPanel>
                                 <TextBlock Text="{Binding Message}" Foreground="Black" FontSize="14px" TextWrapping="Wrap" />
                                 <TextBlock HorizontalAlignment="Right" Text="{Binding Time, StringFormat=dd-MM-yyyy hh:mm:ss}" Foreground="Black" FontSize="8px" />
@@ -49,8 +49,8 @@
 
                     <DataTemplate DataType="{x:Type msgTypes:SentMessage}">
                         <Border Margin="10" HorizontalAlignment="Right"
-                                Background="#FF5555FF" CornerRadius="10"
-                                Padding="5">
+                                Background="#FF3484D0" CornerRadius="10"
+                                Padding="5" BorderThickness="1" BorderBrush="#FF9196FF">
                             <StackPanel>
                                 <TextBlock Text="{Binding Message}" Foreground="White" FontSize="14px" TextWrapping="Wrap" />
                                 <TextBlock HorizontalAlignment="Right"
@@ -60,6 +60,12 @@
                         </Border>
                     </DataTemplate>
                 </ItemsControl.Resources>
+                <ItemsControl.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFEAEAEA" Offset="1"/>
+                        <GradientStop Color="White"/>
+                    </LinearGradientBrush>
+                </ItemsControl.Background>
             </ItemsControl>
         </ScrollViewer>
 
@@ -71,7 +77,7 @@
                     IsDefault="True"
                     DockPanel.Dock="Right"
                     Command="{Binding SendCommand}">Send</Button>
-            <TextBox DockPanel.Dock="Left" Text="{Binding LastMessage, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox DockPanel.Dock="Left" Text="{Binding LastMessage, UpdateSourceTrigger=PropertyChanged}" Background="White" />
         </DockPanel>
     </Grid>
 </UserControl>
