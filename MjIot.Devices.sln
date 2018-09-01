@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CmdDashArgsReaderLibraryTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MjIot.Devices.Reference.Chatter", "MJIoTChatter\MjIot.Devices.Reference.Chatter.csproj", "{56867052-7DC0-4512-A90C-C046061BB3D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MjIot.Devices.Reference.HysteresisController", "MjIot.Devices.Reference.HysteresisController\MjIot.Devices.Reference.HysteresisController.csproj", "{3DD47A22-C838-4ABF-801A-1053F88686CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MjIot.Devices.Reference.HysteresisController", "MjIot.Devices.Reference.HysteresisController\MjIot.Devices.Reference.HysteresisController.csproj", "{3DD47A22-C838-4ABF-801A-1053F88686CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MjIot.Devices.Reference.Display", "MjIot.Devices.Reference.Display\MjIot.Devices.Reference.Display.csproj", "{E798122E-A19B-4763-B463-EA93AE282979}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,12 +59,16 @@ Global
 		{3DD47A22-C838-4ABF-801A-1053F88686CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DD47A22-C838-4ABF-801A-1053F88686CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DD47A22-C838-4ABF-801A-1053F88686CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E798122E-A19B-4763-B463-EA93AE282979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E798122E-A19B-4763-B463-EA93AE282979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E798122E-A19B-4763-B463-EA93AE282979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E798122E-A19B-4763-B463-EA93AE282979}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {14190796-A081-427B-80DA-B066548296F4}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
+		SolutionGuid = {14190796-A081-427B-80DA-B066548296F4}
 	EndGlobalSection
 EndGlobal
