@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Devices.Client;
 
@@ -26,6 +27,8 @@ namespace MjIot.Devices.Common.Core
 
             DeviceClient = DeviceClient.Create(_iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey(DeviceId, _deviceKey), transportType);
             SetConnectionCheckHandler();
+
+            //Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
         }
 
         public async Task CloseAsync()

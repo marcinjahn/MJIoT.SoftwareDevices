@@ -28,11 +28,19 @@ namespace MjIot.Devices.Reference.Chatter.ViewModels
 
             DeviceName = _argsReader.Get("name");
 
-            _device = new IotHubDevice(_iotHubUri, _argsReader.Get("deviceKey"), _argsReader.Get("deviceId"));
-            _sender = new Sender(_device);
-            _listener = new Listener(_device);
-            _listener.StartListening();
-            _listener.MessageReceived += OnMessageReceived;
+            try
+            {
+                _device = new IotHubDevice(_iotHubUri, _argsReader.Get("deviceKey"), _argsReader.Get("deviceId"));
+                _sender = new Sender(_device);
+                _listener = new Listener(_device);
+                _listener.StartListening();
+                _listener.MessageReceived += OnMessageReceived;
+            }
+            catch(Exception e)
+            {
+                Messages.Add(new SentMessage("There was an error"));
+            }
+
 
             SendCommand = new MJMVVM.DelegateCommand(OnSend, CanSend);
 
